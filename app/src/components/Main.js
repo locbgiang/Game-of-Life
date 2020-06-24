@@ -6,8 +6,8 @@ class Main extends React.Component {
 	constructor() {
 		super();
 		this.speed = 100;
-		this.rows = 30;
-		this.cols = 50;
+		this.rows = 50;
+		this.cols = 70;
 
 		this.state = {
 			generation: 0,
@@ -16,11 +16,14 @@ class Main extends React.Component {
 	}
 
 	selectBox = (row, col) => {
-		let gridCopy = arrayClone(this.state.gridFull);
-		gridCopy[row][col] = !gridCopy[row][col];
-		this.setState({
-			gridFull: gridCopy
-		});
+		if (!(this.intervalId > 0)){
+			let gridCopy = arrayClone(this.state.gridFull);
+			gridCopy[row][col] = !gridCopy[row][col];
+			this.setState({
+				gridFull: gridCopy
+			});
+		}
+		
 	}
 
 	seed = () => {
@@ -44,16 +47,7 @@ class Main extends React.Component {
 
 	pauseButton = () => {
 		clearInterval(this.intervalId);
-	}
-
-	slow = () => {
-		this.speed = 1000;
-		this.playButton();
-	}
-
-	fast = () => {
-		this.speed = 100;
-		this.playButton();
+		this.intervalId = 0;
 	}
 
 	clear = () => {
@@ -108,10 +102,6 @@ class Main extends React.Component {
 
 	}
 
-	componentDidMount() {
-		this.seed();
-		this.playButton();
-	}
 
 	render() {
 		return (
@@ -123,12 +113,6 @@ class Main extends React.Component {
                     </button>
                     <button onClick = {this.pauseButton}>
                         Pause
-                    </button>
-                    <button onClick = {this.slow}>
-                        Slow
-                    </button>
-                    <button onClick = {this.fast}>
-                        Fast
                     </button>
                     <button onClick = {this.clear}>
                         Clear
