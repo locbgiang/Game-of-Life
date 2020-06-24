@@ -48,3 +48,14 @@ h1, h2, h3, h4 {
 h4 {
   margin-top: 0px;
 }
+
+.buttonDiv {
+  width: 40%;
+  margin: 1% auto;
+  display:flex;
+  justify-content: space-between;
+}
+
+button{
+  width: 10%;
+}
