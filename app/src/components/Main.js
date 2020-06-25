@@ -121,29 +121,34 @@ class Main extends React.Component {
                         Seed
                     </button>
                 </vid>
-                
-				<Board
-					gridFull={this.state.gridFull}
-					rows={this.rows}
-					cols={this.cols}
-					selectBox={this.selectBox}
-				/>
+                <div class='body'>
+					<div class = 'rules' >
+
+					</div>
+					<Board
+						gridFull={this.state.gridFull}
+						rows={this.rows}
+						cols={this.cols}
+						selectBox={this.selectBox}
+					/>
+					<div class = 'rules' >
+						<h2>Rules: </h2>
+						<h3>
+						1. Any live cell with two or three live neighbours survives.
+						</h3>
+						<h3>
+						2. Any dead cell with three live neighbours becomes a live cell.
+						</h3>
+						<h3>
+						3. All other live cells die in the next generation. Similarly, all other dead cells stay dead.
+						</h3>
+					</div>
+				</div>
 				<h2>Generations: {this.state.generation}</h2>
 			</div>
 		);
 	}
 }
-/*
-<Buttons
-					playButton={this.playButton}
-					pauseButton={this.pauseButton}
-					slow={this.slow}
-					fast={this.fast}
-					clear={this.clear}
-					seed={this.seed}
-					gridSize={this.gridSize}
-				/>
-*/
 
 function arrayClone(arr) {
 	return JSON.parse(JSON.stringify(arr));
