@@ -114,6 +114,9 @@ class Main extends React.Component {
                     <button onClick = {this.pauseButton}>
                         Pause
                     </button>
+					<button onClick = {this.play}>
+                        Next
+                    </button>
                     <button onClick = {this.clear}>
                         Clear
                     </button>
